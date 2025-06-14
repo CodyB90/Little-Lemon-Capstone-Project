@@ -1,7 +1,5 @@
 from django.test import TestCase
-from restaurant.views import MenuItemView
 from restaurant.models import Menu
-from restaurant.serializers import MenuSerializer
 from django.contrib.auth.models import User
 from rest_framework.test import APIClient
 from rest_framework.authtoken.models import Token
@@ -17,7 +15,7 @@ class MenuItemViewTest(TestCase):
 
     def test_getall(self):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
-        response = self.client.get('/restaurant/menu/')
+        response = self.client.get('/api/menu/')
         self.assertEqual(response.status_code, 200)
 
         expected_data = [
